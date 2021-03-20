@@ -1,0 +1,48 @@
+hyperparams:
+  batch_size: 256 # DQN experiments in the 'RL Unplugged' paper were run with batch size 256.
+  pretrain_steps: 500000
+  steps: 2000000
+  discount_rate: 0.99
+
+  # architecture parameters
+  feature_dim: 512 # encoder output dimensions # TODO: large?
+  encoder_type: 'Pixel'
+  projection_feature_dim: 256
+
+  # Method specific parameters
+  dqn_learning_rate: 0.00003
+  importance_sampling_exponent: 0.2
+  target_update_period: 2500
+  dqn_hidden_dims: [512]
+  
+  bc_learning_rate: 0.0001
+  bc_dropout_rate: 0.7
+
+  # Abstraction specific parameters
+  ae_learning_rate: 0.00003
+  ae_weight: 0.001
+
+  dbc_learning_rate: 0.00003 # TODO: increase for joint?
+  dbc_weight: 1
+
+  contrastive_dbc_learning_rate: 0.00003
+  contrastive_loss_weight: 1.0
+  contrastive_loss_temperature: 0.5
+  use_coupling_weights: True
+
+  deepmdp_learning_rate: 0.00003
+  deepmdp_weight: 1
+  transition_model_layer_width: 512 # TODO: large?
+  reward_decoder_layer_width: 256
+
+# evaluation
+evaluation_episodes: 1
+evaluation_frequency: 1500
+final_evaluation_episodes: 30
+n_steps_render: 1500
+
+supported_games:
+  - Pong
+  - YarsRevenge
+  - Enduro
+  - Breakout

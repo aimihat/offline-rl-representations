@@ -1,0 +1,46 @@
+hyperparams:
+  ### Training params
+  data_run: '1-5'
+  batch_size: 256 # DQN experiments in the 'RL Unplugged' paper were run with batch size 256.
+  pretrain_steps: 50000
+  steps: 50000
+  discount_rate: 0.99
+
+  ### Architecture params
+  feature_dim: 64 # encoder output dimensions # TODO: large?
+  encoder_type: 'LowDim'
+  projection_feature_dim: 32
+
+  ### Algorithm specific params
+  # DQN
+  dqn_learning_rate: 0.0013 # tuned
+  dqn_hidden_dims: [64, 32]
+  importance_sampling_exponent: 0.2
+  target_update_period: 200 # tuned
+  # BC
+  bc_learning_rate: 0.001
+  bc_dropout_rate: 0.8 # tuned
+
+  ### Abstraction specific parameters
+  # AE
+  ae_learning_rate: 0.0006 # tuned
+  ae_weight: 0.0003 # tuned
+  # DBC
+  dbc_learning_rate: 0.00007 # TODO: increase for joint?
+  dbc_weight: 1
+  # Contrastive DBC
+  contrastive_dbc_learning_rate: 0.003 # tuned
+  contrastive_loss_weight: 3.3 # tuned
+  contrastive_loss_temperature: 0.5
+  use_coupling_weights: True
+  # DeepMDP
+  deepmdp_learning_rate: 0.00118 # tuned
+  deepmdp_weight: 1.33 # tuned
+  transition_model_layer_width: 64
+  reward_decoder_layer_width: 32
+
+# evaluation
+evaluation_episodes: 1
+evaluation_frequency: 450
+final_evaluation_episodes: 30
+n_steps_render: 1500
